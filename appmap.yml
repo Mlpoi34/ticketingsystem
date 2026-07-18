@@ -1,0 +1,5 @@
+language: "java"
+name: "ticketingsystem"
+appmap_dir: "tmp/appmap"
+packages:
+- path: "com.ticketing"
