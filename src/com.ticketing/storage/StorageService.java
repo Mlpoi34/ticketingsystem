@@ -164,23 +164,57 @@ public class StorageService {
         }
 
     }
-    public void loadSeats(ArrayList<Seat> seats) {
+    public void loadSeats(ArrayList<Event> events) {
 
         try {
+
             File file = new File("data\\seats.txt");
+
             Scanner reader = new Scanner(file);
-            while (reader.hasNextLine()){
+
+            while (reader.hasNextLine()) {
+
                 String line = reader.nextLine();
-                String[] parts = line.spilt("\\|")
-                        if (parts,length == 5){
-                            String eventTitle = parts[0];
-                            String section = parts[1];
-                            String row = parts[2];
-                            int number = Integer.parseInt(parts[3]);
-                            boolean isReserved = Boolean.parseBoolean(parts[4]);
+
+                String[] parts = line.split("\\|");
+
+                if (parts.length == 5) {
+
+                    String eventTitle = parts[0];
+                    String section = parts[1];
+                    String row = parts[2];
+                    int number = Integer.parseInt(parts[3]);
+                    boolean reserved = Boolean.parseBoolean(parts[4]);
+
+                    for (Event event : events) {
+
+                        if (event.getTitle().equals(eventTitle)) {
+
+                            Seat seat = new Seat(section, row, number);
+
+                            seat.setReserved(reserved);
+
+                            event.getSeats().add(seat);
+
+                            break;
+                        }
+
+                    }
+
                 }
-            }for
+
+            }
+
+            reader.close();
+
+            System.out.println("Seats loaded successfully!");
+
+        } catch (FileNotFoundException e) {
+
+            System.out.println("No seats file found.");
+
         }
+
     }
 
 }

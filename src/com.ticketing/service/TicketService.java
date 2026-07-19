@@ -226,6 +226,10 @@ public class TicketService {
 
 
         }
+    public TicketService() {
+        storageService.loadSeats(events);
+    }
+
 
     }
 
