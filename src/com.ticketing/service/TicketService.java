@@ -127,6 +127,7 @@ public class TicketService {
             scanner.nextLine();
             Seat selectedSeat = new Seat(section, row, number);
             selectedEvent.getSeats().add(selectedSeat);
+            storageService.saveSeats(events);
             System.out.println();
             System.out.println("Seat added successfully!");
         }
@@ -225,5 +226,6 @@ public class TicketService {
 
 
         }
+
     }
 
