@@ -1,1 +1,1 @@
-Java Conference 2026|vip|1|1|false
+Java Conference 2026|vip|1|1|true

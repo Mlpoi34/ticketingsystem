@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.io.FileWriter;
+import com.ticketing.model.Reservation;
 import java.io.IOException;
 import com.ticketing.model.Seat;
 
@@ -216,5 +217,33 @@ public class StorageService {
         }
 
     }
+    public void saveReservations(ArrayList<Reservation> reservations) {
 
+        try {
+
+            FileWriter writer = new FileWriter("data\\reservations.txt");
+
+            for (Reservation reservation : reservations) {
+
+                writer.write(
+                        reservation.getCustomerName() + "|" +
+                                reservation.getEvent().getTitle() + "|" +
+                                reservation.getSeat().getSection() + "|" +
+                                reservation.getSeat().getRow() + "|" +
+                                reservation.getSeat().getNumber() + "\n"
+                );
+
+            }
+
+            writer.close();
+
+            System.out.println("******** SAVE RESERVATIONS CALLED ********");
+
+        } catch (IOException e) {
+
+            System.out.println("Error saving reservations.");
+
+        }
+
+    }
 }

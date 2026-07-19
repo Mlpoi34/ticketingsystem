@@ -189,6 +189,8 @@ public class TicketService {
         Reservation reservation = new Reservation(customerName, event, seat);
         reservations.add(reservation);
         seat.setReserved(true);
+        storageService.saveReservations(reservations);
+       storageService.saveSeats(events);
         System.out.println("Reservation made successfully!");
     }
 
